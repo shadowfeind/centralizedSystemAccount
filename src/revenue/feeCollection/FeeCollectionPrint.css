@@ -1,0 +1,37 @@
+.fee-collection-container {
+  box-sizing: border-box;
+  width: 100%;
+  color: #707478;
+  margin: 0 auto;
+}
+.fee-collection {
+  margin: 10px;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #f3f3f3;
+}
+.fee-collection-container h6 {
+  margin: 0;
+  padding-top: 4px;
+  font-size: 14px;
+}
+.student-admit-name-container {
+  margin-top: 12px;
+}
+.fee-collection-container table {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.fee-collection-container td,
+.fee-collection-container th {
+  border: 1px solid #000;
+  margin: 0;
+  padding: 7px 15px;
+}
+.fee-collection-bottom-container-signature {
+  margin-top: 90px;
+}
