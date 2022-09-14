@@ -8,7 +8,7 @@ import moment from "moment";
 import axios from "axios";
 // import moment from "moment";
 
-export const API_URL = "http://103.90.86.151:106";
+export const API_URL = "https://school.vidyacube.com";
 // export const API_URL = "https://mis.vidyacube.com";
 // export const API_URL = "https://divinelight.vidyacube.com";
 // export const API_URL = "https://creation.vidyacube.com";

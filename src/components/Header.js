@@ -149,10 +149,11 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch({ type: GET_HEADER_CONTENT_RESET });
+    window.location.href = "https://school.vidyacube.com/";
     sessionStorage.removeItem("blueberrytoken");
     // window.location.href = "https://divinelight.vidyacube.com";
     // window.location.href = "https://mis.vidyacube.com";
-    window.location.href = "http://103.90.86.151:106";
+
     // window.location.href = "https://creation.vidyacube.com";
   };
 
