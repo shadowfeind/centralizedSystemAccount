@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import Notification from "../../components/Notification";
 import { useReactToPrint } from "react-to-print";
 import "../admitStudent/AdmitStudentPrint.css";
 import { API_URL } from "../../constants";
 import { getHeaderBannerAction } from "../../dashboard/DashboardActions";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const StudentDuePrint = ({
   printDue,
@@ -49,7 +50,8 @@ const StudentDuePrint = ({
 
   return (
     <>
-      <div className="student-print-container" ref={componentRef}>
+    <DialogContent>
+    <div className="student-print-container" ref={componentRef}>
         <Grid container>
           <Grid item xs={3}>
             <h6>
@@ -117,15 +119,7 @@ const StudentDuePrint = ({
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
         <Button
           onClick={() => setOpenPopup(false)}
           className="print-button-hide"
@@ -143,7 +137,13 @@ const StudentDuePrint = ({
         >
           PRINT
         </Button>
-      </div>
+      
+
+    </DialogContent>
+    <DialogFooter>
+
+    </DialogFooter>
+      
       <Notification notify={notify} setNotify={setNotify} />
     </>
   );

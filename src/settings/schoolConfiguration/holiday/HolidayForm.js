@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import InputControl from "../../../components/controls/InputControl";
 import { useForm, Form } from "../../../customHooks/useForm";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import {
   holidayCreateAction,
   updateSingleHoliadyAction,
 } from "./HolidayActions";
+import DialogFooter from "../../../components/controls/DialogFooter";
 
 const initialFormValues = {
   IDHRHoliday: 0,
@@ -85,6 +86,8 @@ const HolidayForm = ({ holiday, setOpenPopup, startDate, endDate }) => {
     setValues((prev) => ({ ...prev, FromDate: startDate, ToDate: endDate }));
   }, []);
   return (
+    <>
+    <DialogContent>
     <Form onSubmit={handleSubmit}>
       <Grid container style={{ fontSize: "12px" }}>
         <Grid item xs={6}>
@@ -127,15 +130,13 @@ const HolidayForm = ({ holiday, setOpenPopup, startDate, endDate }) => {
           />
         </Grid>
       </Grid>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+    </Form>
+    
+
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           variant="contained"
           color="secondary"
@@ -148,12 +149,15 @@ const HolidayForm = ({ holiday, setOpenPopup, startDate, endDate }) => {
           variant="contained"
           color="primary"
           type="submit"
+          onClick={handleSubmit}
           style={{ margin: "10px 0 0 10px" }}
         >
           SUBMIT
         </Button>
-      </div>
-    </Form>
+      
+    </DialogFooter>
+    </>
+    
   );
 };
 

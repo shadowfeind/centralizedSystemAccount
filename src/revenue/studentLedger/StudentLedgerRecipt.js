@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Button, DialogContent, Grid, makeStyles } from "@material-ui/core";
 import Notification from "../../components/Notification";
 import inWords from "../../helpers/numToWords";
 import { API_URL } from "../../constants";
 import { useReactToPrint } from "react-to-print";
 import { getHeaderBannerAction } from "../../dashboard/DashboardActions";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const useStyles = makeStyles((theme) => ({
   studentLedgerPrint: {
@@ -53,6 +54,7 @@ const StudentLedgerRecipt = ({
   newIdForReceipt,
   acaYear,
   academicYearDdl,
+  narration
 }) => {
   const [notify, setNotify] = useState({
     isOpen: false,
@@ -92,7 +94,8 @@ const StudentLedgerRecipt = ({
 
   return (
     <>
-      <div ref={componentRef}>
+    <DialogContent>
+    <div ref={componentRef}>
         <div className={classes.studentLedgerPrint}>
           <Grid container>
             <Grid item xs={3}>
@@ -192,6 +195,12 @@ const StudentLedgerRecipt = ({
               <h4>
                 <b>Balance Due: Rs.</b>
                 {(balDue - amountPaid - discount - advancedPaid)?.toFixed(2)}
+              </h4>
+            </Grid>
+            <Grid item xs={12}>
+              <h4>
+                <b>Narration: {narration} </b>
+                
               </h4>
             </Grid>
           </Grid>
@@ -311,8 +320,14 @@ const StudentLedgerRecipt = ({
                 {(balDue - amountPaid - discount - advancedPaid)?.toFixed(2)}
               </h4>
             </Grid>
+            <Grid item xs={12}>
+              <h4>
+              <b>Narration: {narration} </b>
+              </h4>
+            </Grid>
           </Grid>
 
+        
           <Grid
             container
             style={{
@@ -331,15 +346,12 @@ const StudentLedgerRecipt = ({
           </Grid>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+
+    </DialogContent>
+
+    <DialogFooter>
+    
         <Button
           onClick={() => setOpenPopup(false)}
           className="print-button-hide"
@@ -357,7 +369,9 @@ const StudentLedgerRecipt = ({
         >
           PRINT
         </Button>
-      </div>
+      
+    </DialogFooter>
+      
       <Notification notify={notify} setNotify={setNotify} />
     </>
   );

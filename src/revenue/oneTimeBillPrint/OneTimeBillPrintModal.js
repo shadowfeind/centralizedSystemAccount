@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import { useReactToPrint } from "react-to-print";
 import OneTimeBillPrintDesign from "./OneTimeBillPrintDesign";
 import { GET_HEADER_BANNER_RESET } from "../../dashboard/DashboardConstants";
 import Notification from "../../components/Notification";
 import { getHeaderBannerAction } from "../../dashboard/DashboardActions";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const OneTimeBillPrintModal = ({
   printOneTimeBill,
@@ -53,7 +54,8 @@ const OneTimeBillPrintModal = ({
 
   return (
     <>
-      <div ref={componentRef}>
+    <DialogContent>
+    <div ref={componentRef}>
         <div style={{ margin: "10px" }}>
           <Grid container>
             {printOneTimeBill?.dbModelLstForAdmissionRegistrationForOneTime?.map(
@@ -84,15 +86,11 @@ const OneTimeBillPrintModal = ({
           </Grid>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           onClick={() => setOpenPopup(false)}
           className="print-button-hide"
@@ -110,7 +108,9 @@ const OneTimeBillPrintModal = ({
         >
           PRINT
         </Button>
-      </div>
+      
+    </DialogFooter>
+      
       <Notification notify={notify} setNotify={setNotify} />
     </>
   );

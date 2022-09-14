@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import Notification from "../../components/Notification";
 import { API_URL } from "../../constants";
 import { useReactToPrint } from "react-to-print";
 import "./FeeCollectionPrint.css";
 import { getHeaderBannerAction } from "../../dashboard/DashboardActions";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const FeeCollectionPrint = ({
   printFee,
@@ -49,7 +50,8 @@ const FeeCollectionPrint = ({
 
   return (
     <>
-      <div className="fee-collection-container" ref={componentRef}>
+    <DialogContent>
+    <div className="fee-collection-container" ref={componentRef}>
         <div className="fee-collection">
           <Grid container>
             <Grid item xs={3}>
@@ -129,15 +131,12 @@ const FeeCollectionPrint = ({
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+      
+
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           onClick={() => setOpenPopup(false)}
           className="print-button-hide"
@@ -155,8 +154,10 @@ const FeeCollectionPrint = ({
         >
           PRINT
         </Button>
-      </div>
-      <Notification notify={notify} setNotify={setNotify} />
+      
+    </DialogFooter>
+    <Notification notify={notify} setNotify={setNotify} />
+      
     </>
   );
 };

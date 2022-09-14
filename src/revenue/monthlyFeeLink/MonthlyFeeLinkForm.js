@@ -9,6 +9,7 @@ import {
   Checkbox,
   Button,
   TextField,
+  DialogContent,
 } from "@material-ui/core";
 import { useForm, Form } from "../../customHooks/useForm";
 import { useDispatch } from "react-redux";
@@ -16,6 +17,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { postMonthlyFeeLinkAction } from "./MonthlyFeeLinkActions";
 import { symbolsArr } from "../../helpers/excludeSymbol";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -150,7 +152,8 @@ const MonthlyFeeLinkForm = ({
 
   return (
     <>
-      <TableContainer component={Paper}>
+    <DialogContent>
+    <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -236,15 +239,11 @@ const MonthlyFeeLinkForm = ({
           {errors.submit}
         </div>
       )}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           variant="contained"
           color="secondary"
@@ -263,7 +262,9 @@ const MonthlyFeeLinkForm = ({
         >
           {activeButton ? "...PROCESSING" : "SUBMIT"}
         </Button>
-      </div>
+      
+    </DialogFooter>
+      
     </>
   );
 };
