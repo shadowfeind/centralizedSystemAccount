@@ -6,7 +6,7 @@ import inWords from "../../helpers/numToWords";
 import { API_URL } from "../../constants";
 import { useReactToPrint } from "react-to-print";
 import { getHeaderBannerAction } from "../../dashboard/DashboardActions";
-import DialogFooter from "../../components/controls/DialogFooter";
+import DialogFooter from "../../components/controls/DialogFooter"
 
 const useStyles = makeStyles((theme) => ({
   studentLedgerPrint: {
