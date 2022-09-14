@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import InputControl from "../../components/controls/InputControl";
 import { useForm, Form } from "../../customHooks/useForm";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import {
   putExtraFeeStructureAction,
 } from "./ExtraFeeStructureActions";
 import { symbolsArr } from "../../helpers/excludeSymbol";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const initialFormValues = {
   IDAccountType: 0,
@@ -84,6 +85,8 @@ const ExtraFeeStructureForm = ({
   }, [editAccount]);
 
   return (
+    <>
+    <DialogContent>
     <Form onSubmit={handleSubmit}>
       <Grid container style={{ fontSize: "12px" }}>
         <Grid item xs={6}>
@@ -135,15 +138,12 @@ const ExtraFeeStructureForm = ({
           <div></div>
         </Grid>
       </Grid>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+     
+    </Form>
+
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           variant="contained"
           color="secondary"
@@ -157,12 +157,15 @@ const ExtraFeeStructureForm = ({
           color="primary"
           type="submit"
           disabled={activeButton}
+          onClick={handleSubmit}
           style={{ margin: "10px 0 0 10px" }}
         >
           {activeButton ? "...PROCESSING" : "SUBMIT"}
         </Button>
-      </div>
-    </Form>
+      
+    </DialogFooter>
+    </>
+    
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Grid } from "@material-ui/core";
+import { Button, DialogContent, Grid } from "@material-ui/core";
 import InputControl from "../../components/controls/InputControl";
 import { useForm, Form } from "../../customHooks/useForm";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import DatePickerControl from "../../components/controls/DatePickerControl";
 import CheckBoxControl from "../../components/controls/CheckBoxControl";
 import { postVendorAction, putVendorAction } from "./VendorActions";
 import { symbolsArrPhone } from "../../helpers/excludeSymbol";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const initialFormValues = {
   IDVendor: 0,
@@ -127,7 +128,8 @@ const VendorForm = ({ createAccount, editAccount, setOpenPopup }) => {
   }, [editAccount]);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
+    <DialogContent><Form onSubmit={handleSubmit}>
       <Grid container style={{ fontSize: "12px" }}>
         <Grid item xs={12}>
           <InputControl
@@ -237,15 +239,11 @@ const VendorForm = ({ createAccount, editAccount, setOpenPopup }) => {
           <div></div>
         </Grid>
       </Grid>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "end",
-          paddingTop: "10px",
-          marginTop: "10px",
-          borderTop: "1px solid #f3f3f3",
-        }}
-      >
+      
+    </Form>
+    </DialogContent>
+    <DialogFooter>
+    
         <Button
           variant="contained"
           color="secondary"
@@ -259,12 +257,16 @@ const VendorForm = ({ createAccount, editAccount, setOpenPopup }) => {
           color="primary"
           type="submit"
           disabled={activeButton}
+          onClick={handleSubmit}
           style={{ margin: "10px 0 0 10px" }}
         >
           {activeButton ? "...PROCESSING" : "SUBMIT"}
         </Button>
-      </div>
-    </Form>
+      
+
+    </DialogFooter>
+    
+    </>
   );
 };
 

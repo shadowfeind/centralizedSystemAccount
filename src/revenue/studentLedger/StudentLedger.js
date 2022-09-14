@@ -958,6 +958,7 @@ const StudentLedger = () => {
           newIdForReceipt={newIdForReceipt}
           acaYear={acaYear}
           academicYearDdl={academicYearDdl}
+          narration={narrationPrint}
         />
       </Popup>
       <Popup

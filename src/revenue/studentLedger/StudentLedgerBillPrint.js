@@ -23,6 +23,7 @@ const StudentLedgerBillPrint = ({
   regKey,
   currentMonth,
   setOpenPrintPopup,
+  naration
 }) => {
   const [notify, setNotify] = useState({
     isOpen: false,
@@ -123,6 +124,8 @@ const StudentLedgerBillPrint = ({
                 <td>Previous Balance</td>
                 <td>{prevBal}</td>
               </tr>
+
+              
               <tr>
                 <td></td>
                 <td>Total</td>
@@ -141,9 +144,69 @@ const StudentLedgerBillPrint = ({
                   ).toFixed(2)} */}
                 </td>
               </tr>
+
+              
             </tbody>
           </table>
         </div>
+
+        
+
+        <div className="student-admit-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style={{ width: "10%", textAlign: "center" }}>SN.</th>
+                <th style={{ width: "65%" }}>Fee Heading</th>
+                <th style={{ width: "35%", textAlign: "center" }}>
+                  Amount(Rs)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {monthlyFee
+                ?.filter((x) => x.IDMonth == currentMonth)
+                ?.map((s, i) => (
+                  <tr key={s.AccountSubmitCode}>
+                    <td>{i + 1}</td>
+                    <td>{s.AccountName}</td>
+                    <td>{Number(s.Total)?.toFixed(2)}</td>
+                  </tr>
+                ))}
+
+              <tr>
+                <td></td>
+                <td>Previous Balance</td>
+                <td>{prevBal}</td>
+              </tr>
+
+              
+              <tr>
+                <td></td>
+                <td>Total</td>
+                <td>
+                  {/* {(
+                    monthlyFee
+                      ?.filter((x) => x.active === true)
+                      ?.reduce((acc, item) => {
+                        return acc + Number(item.Cr);
+                      }, 0) +
+                    extraFee
+                      ?.filter((x) => x.active === true)
+                      ?.reduce((acc, item) => {
+                        return acc + Number(item.Cr);
+                      }, 0)
+                  ).toFixed(2)} */}
+                </td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+
+
+        
         <div className="student-admit-bottom-container">
           <h6>
             In words:{" "}

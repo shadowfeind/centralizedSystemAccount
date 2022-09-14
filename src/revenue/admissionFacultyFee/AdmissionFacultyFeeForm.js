@@ -10,6 +10,7 @@ import {
   Button,
   TextField,
   Grid,
+  DialogContent,
 } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
@@ -18,6 +19,7 @@ import { useForm, Form } from "../../customHooks/useForm";
 import Paper from "@material-ui/core/Paper";
 import { postAdmissionFacultyFeeStructureAction } from "./AdmissionFacultyFeeActions";
 import { symbolsArr } from "../../helpers/excludeSymbol";
+import DialogFooter from "../../components/controls/DialogFooter";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -152,7 +154,8 @@ const AdmissionFacultyFeeForm = ({
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+    <DialogContent>
+    <Form onSubmit={handleSubmit}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
             <TableHead>
@@ -239,15 +242,12 @@ const AdmissionFacultyFeeForm = ({
             {errors.submit}
           </div>
         )}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            paddingTop: "10px",
-            marginTop: "10px",
-            borderTop: "1px solid #f3f3f3",
-          }}
-        >
+       
+      </Form>
+
+    </DialogContent>
+    <DialogFooter>
+   
           <Button
             variant="contained"
             color="secondary"
@@ -261,12 +261,14 @@ const AdmissionFacultyFeeForm = ({
             color="primary"
             type="submit"
             disabled={activeButton}
+            onClick={handleSubmit}
             style={{ margin: "10px 0 0 10px" }}
           >
             {activeButton ? "...PROCESSING" : "SUBMIT"}
           </Button>
-        </div>
-      </Form>
+        
+    </DialogFooter>
+      
     </>
   );
 };
